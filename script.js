@@ -15,8 +15,15 @@ const BREAK_TIME = 5 * 60; // 5 minutes in seconds
 function updateDisplay(timeLeft) {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
+    const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    
+    // Update the display
     minutesDisplay.textContent = minutes.toString().padStart(2, '0');
     secondsDisplay.textContent = seconds.toString().padStart(2, '0');
+    
+    // Update the tab title - include the current mode
+    const mode = isWorkTime ? 'Work' : 'Break';
+    document.title = `${timeString} - ${mode} - Pomodoro`;
 }
 
 function switchMode() {
@@ -66,7 +73,9 @@ function toggleMode() {
     }
     
     switchMode();
-    toggleButton.textContent = isWorkTime ? 'Start Break' : 'Start Work';
+    const newIcon = isWorkTime ? '🌞' : '🌙';
+    console.log('Switching to:', isWorkTime ? 'work' : 'break', 'Icon:', newIcon);
+    toggleButton.textContent = newIcon;
 }
 
 startButton.addEventListener('click', () => {
@@ -84,4 +93,6 @@ toggleButton.addEventListener('click', toggleMode);
 
 // Initialize the display
 timeLeft = WORK_TIME;
-updateDisplay(timeLeft); 
+updateDisplay(timeLeft);
+
+toggleButton.textContent = '🌞'; // Initial icon 

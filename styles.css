@@ -16,6 +16,7 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     max-width: 400px;
     width: 90%;
+    position: relative;
 }
 
 .timer {
@@ -67,4 +68,29 @@ body {
 .controls button#reset:hover {
     background-color: #e66767;
     box-shadow: 0 5px 15px rgba(255, 118, 117, 0.2);
+}
+
+#toggle-mode {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #00b894;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+#toggle-mode:hover {
+    background-color: #00a382;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 184, 148, 0.2);
 } 
